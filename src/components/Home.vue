@@ -8,21 +8,37 @@
       <el-button type="info" @click="logout" class="btn">退出登录</el-button>
     </el-header>
     <el-container class="container_box">
-      <el-aside :width="collapse ? '56px':'200px'" class="aside_box">
+      <!--侧边栏-->
+      <el-aside :width="collapse ? '56px' : '200px'" class="aside_box">
         <div class="toggle" @click="toggle">|||</div>
-        <el-menu background-color="#545c64" text-color="#fff" active-text-color="#409eef" unique-opened :collapse="collapse" :collapse-transition="false" router :default-active="activeIndex">
+        <el-menu
+          background-color="#545c64"
+          text-color="#fff"
+          active-text-color="#409eef"
+          unique-opened
+          :collapse="collapse"
+          :collapse-transition="false"
+          router
+          :default-active="activeIndex"
+        >
           <el-submenu :index="item.id + ''" v-for="item in menuList" :key="item.id">
             <template slot="title">
               <i :class="fontList[item.id]"></i>
-              <span>{{item.authName}}</span>
+              <span>{{ item.authName }}</span>
             </template>
-            <el-menu-item :index="'/' + subItem.path" v-for="subItem in item.children" :key="subItem.id" @click="activeClick">
+            <el-menu-item
+              :index="'/' + subItem.path"
+              v-for="subItem in item.children"
+              :key="subItem.id"
+              @click="activeClick"
+            >
               <i class="el-icon-menu"></i>
-              <span>{{subItem.authName}}</span>
+              <span>{{ subItem.authName }}</span>
             </el-menu-item>
           </el-submenu>
         </el-menu>
       </el-aside>
+      <!--主体-->
       <el-main class="main_box">
         <router-view></router-view>
       </el-main>
