@@ -34,7 +34,7 @@ export default {
       },
       rules: {
         username: [
-          { required: true, message: '请输入用户名称', trigger: 'blur' },
+          { required: true, message: '请输入用户名', trigger: 'blur' },
           { min: 3, max: 5, message: '长度在 3 到 5 个字符', trigger: 'blur' }
         ],
         password: [
@@ -53,13 +53,12 @@ export default {
     submitForm(formName) {
       this.$refs[formName].validate(async valid => {
         if (valid) {
-          var { data: res } = await this.$request.post('login', this.loginForm)
+          const { data: res } = await this.$request.post('login', this.loginForm)
           if (res.meta.status !== 200) {
             this.$message.error('登录失败')
             return false
           }
           this.$message.success('登陆成功')
-          console.log(res)
           sessionStorage.setItem('token', res.data.token)
           this.$router.push('/home')
         } else {
