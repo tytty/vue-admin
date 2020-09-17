@@ -81,7 +81,7 @@
         <el-form-item label="父级分类">
           <el-cascader
             v-model="selectedKeys"
-            :options="parentCatelist"
+            :options="parentCateList"
             :props="cascaderProps"
             @change="handleChange"
             clearable
@@ -154,7 +154,7 @@ export default {
       ruleFormAdd: {
         cat_name: [{ required: true, message: '请输入分类名称', trigger: 'blur' }]
       },
-      parentCatelist: [],
+      parentCateList: [],
       cascaderProps: {
         expandTrigger: 'hover',
         checkStrictly: true,
@@ -209,7 +209,7 @@ export default {
         this.$message.error('获取父级分类列表失败')
         return false
       }
-      this.parentCatelist = res.data
+      this.parentCateList = res.data
     },
     handleChange() {
       if (this.selectedKeys.length > 0) {
