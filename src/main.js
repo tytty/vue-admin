@@ -8,6 +8,9 @@ import 'normalize.css/normalize.css'
 import '@/assets/css/global.css'
 import '@/assets/fonts/font.css'
 import axios from 'axios'
+import ZkTable from 'vue-table-with-tree-grid'
+
+Vue.component('tree-table', ZkTable)
 
 Vue.use(ElementUI)
 Vue.prototype.$message = Message
