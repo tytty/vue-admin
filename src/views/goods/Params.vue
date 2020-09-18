@@ -228,6 +228,10 @@ export default {
       this.cateList = res.data
     },
     async handleChange() {
+      if (this.selectedKeys.length !== 3) {
+        this.selectedKeys = []
+        return false
+      }
       this.getParamsData()
     },
     handleTabClick() {
