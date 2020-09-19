@@ -30,7 +30,7 @@
               :index="'/' + subItem.path"
               v-for="subItem in item.children"
               :key="subItem.id"
-              @click="activeClick"
+              @click="activeClick('/' + subItem.path)"
             >
               <i class="el-icon-menu"></i>
               <span>{{ subItem.authName }}</span>
@@ -83,8 +83,8 @@ export default {
     toggle() {
       this.collapse = !this.collapse
     },
-    activeClick() {
-      this.activeIndex = this.$route.path
+    activeClick(path) {
+      this.activeIndex = path
       sessionStorage.setItem('activeIndex', this.activeIndex)
     }
   },
